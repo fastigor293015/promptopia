@@ -12,7 +12,7 @@ const PromptCard = ({ post, handleEdit, handleDelete }) => {
 
   const [copied, setCopied] = useState("");
 
-  const isMyPost = useMemo(() => session?.user.id === post.creator._id, [session, post, pathName]);
+  const isMyPost = useMemo(() => session?.user.id === post.creator._id, [session, post]);
 
   const handleCopy = () => {
     setCopied(post.prompt);
@@ -67,7 +67,7 @@ const PromptCard = ({ post, handleEdit, handleDelete }) => {
         {post.tag}
       </p>
 
-      {isMyPost && (
+      {isMyPost && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"
